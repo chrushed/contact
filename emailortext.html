@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .message {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="message" class="message"></div>
+    <script>
+        function detectDevice() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent)) {
+                return 'mobile';
+            } else {
+                return 'desktop';
+            }
+        }
+
+        function redirectBasedOnDevice() {
+            const deviceType = detectDevice();
+            if (deviceType === 'mobile') {
+                window.location.href = 'tel:13216215158';
+            } else {
+                window.location.href = 'mailto:chris@granitecountertopsmelbourne.store';
+            }
+
+            // Redirect back to the main site after a short delay
+            setTimeout(function() {
+                window.location.href = 'https://granitecountertopsmelbourne.store';
+            }, 2000); // 2 seconds delay
+        }
+
+        // Call the function to redirect based on the device type
+        redirectBasedOnDevice();
+    </script>
+</body>
+</html>
